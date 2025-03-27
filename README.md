@@ -76,7 +76,7 @@ The `password.py` file is useful for applications where a strong, random key is 
 Here is the bash script (`decrypt.sh`) that decrypts a hex-encoded string using AES-256 in ECB mode with OpenSSL. Let's break down how it works:
 
 1. `key=$(echo -n "YOUR_KEY" | xxd -p | tr -d '\n')`
-   - Takes a plaintext key ("YOUR_KEY") and converts it to hexadecimal format using `xxd -p`
+   - Takes a plaintext key (`YOUR_KEY`) and converts it to hexadecimal format using `xxd -p`
    - `tr -d '\n'` removes any newline characters
    - Stores the result in the `key` variable
    - Note: For AES-256, the key should be 32 bytes (64 hex characters) long
