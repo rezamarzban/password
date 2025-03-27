@@ -60,3 +60,17 @@ if __name__ == '__main__':
     print("Decrypted plaintext (hex):", decrypted)
 ```
 
+The `password.py` Python file is a simple script designed to generate a secure 256-bit key suitable for AES encryption. Here's a breakdown of the code:
+
+- **Importing the Module:**  
+  The script begins by importing the built-in Python module `secrets`, which is used for generating cryptographically strong random numbers.
+
+- **Key Generation:**  
+  The line `key = secrets.token_bytes(32)` generates 32 random bytes. Since 1 byte equals 8 bits, these 32 bytes form a 256-bit key, making it ideal for AES-256 encryption.
+
+- **Printing the Key:**  
+  The script then prints the generated key in a hexadecimal format using `key.hex()`, which converts the binary key into a human-readable string.
+
+The `password.py` file is useful for applications where a strong, random key is required for encryption purposes.
+
+
