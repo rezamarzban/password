@@ -93,4 +93,12 @@ To use this script:
 2. Replace `YOUR_HEX_STRING` with your hex-encoded ciphertext
 3. Ensure the ciphertext length is a multiple of 32 hex characters (16 bytes) since there's no padding
 
+```bash
+#!/bin/bash
+
+key=$(echo -n "YOUR_KEY" | xxd -p | tr -d '\n')
+
+echo -n "YOUR_HEX_STRING" | xxd -r -p | openssl enc -aes-256-ecb -d -K "$key" -nopad
+```
+
 [Run Bash Online](https://rextester.com/l/bash_online_compiler)
