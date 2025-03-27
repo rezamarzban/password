@@ -73,4 +73,24 @@ The `password.py` Python file is a simple script designed to generate a secure 2
 
 The `password.py` file is useful for applications where a strong, random key is required for encryption purposes.
 
+Here is the bash script (`decrypt.sh`) that decrypts a hex-encoded string using AES-256 in ECB mode with OpenSSL. Let's break down how it works:
 
+1. `key=$(echo -n "YOUR_KEY" | xxd -p | tr -d '\n')`
+   - Takes a plaintext key ("YOUR_KEY") and converts it to hexadecimal format using `xxd -p`
+   - `tr -d '\n'` removes any newline characters
+   - Stores the result in the `key` variable
+   - Note: For AES-256, the key should be 32 bytes (64 hex characters) long
+
+2. `echo -n "YOUR_HEX_STRING" | xxd -r -p | openssl enc -aes-256-ecb -d -K "$key" -nopad`
+   - `echo -n "YOUR_HEX_STRING"` outputs the hex-encoded ciphertext
+   - `xxd -r -p` converts the hex string back to binary
+   - `openssl enc -aes-256-ecb -d` performs AES-256-ECB decryption
+   - `-K "$key"` specifies the key in hex format
+   - `-nopad` disables padding (input must be an exact multiple of the block size, 16 bytes)
+
+To use this script:
+1. Replace `YOUR_KEY` with a 32-byte (256-bit) key in plaintext
+2. Replace `YOUR_HEX_STRING` with your hex-encoded ciphertext
+3. Ensure the ciphertext length is a multiple of 32 hex characters (16 bytes) since there's no padding
+
+[Run Bash Online](https://rextester.com/l/bash_online_compiler)
